@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GRAMMY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#fff;--text:#000;--muted:#777;--line:#e2e2e2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#fff;--text:#000;--muted:#777;--line:#e2e2e2}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Jost,"Helvetica Neue",Arial,sans-serif;font-weight:200;line-height:1.6;min-height:100vh}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);text-align:center}
+.logo{display:inline-flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;padding:6px 16px 26px}
+.logo img{height:48px;width:auto}
+.logo span{font-weight:200;font-size:28px;letter-spacing:.5em;margin-right:-.5em}
+nav{display:flex;justify-content:center;overflow-x:auto;padding:0 8px}
+nav a{color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:.35em;font-size:12px;font-weight:300;padding:14px 18px;border-bottom:1px solid transparent;white-space:nowrap}
+nav a.on{color:var(--text);border-color:var(--text)}
+nav a:hover{color:var(--text)}
+main{max-width:1000px;margin:0 auto;padding:72px 20px 120px;min-height:60vh}
+.view{display:none}.view.on{display:block}
+h2{font-weight:100;font-size:clamp(32px,7vw,56px);text-transform:uppercase;letter-spacing:.3em;margin:0;text-align:center}
+h2::after{content:"";display:block;width:40px;height:1px;background:var(--text);margin:24px auto 0}
+.tog{display:flex;margin:44px auto 0;max-width:520px;border:1px solid var(--text)}
+.tog a{flex:1;display:flex;flex-direction:column;gap:2px;text-align:center;padding:18px 12px;color:var(--text);text-decoration:none}
+.tog a+a{border-left:1px solid var(--text)}
+.tog i{font-style:normal;font-size:11px;letter-spacing:.3em;color:var(--muted)}
+.tog b{font-weight:200;text-transform:uppercase;letter-spacing:.3em;font-size:14px}
+.tog small{font-size:12px;letter-spacing:.1em;color:var(--muted)}
+.tog a.on{background:var(--text);color:var(--bg)}
+.tog a.on i,.tog a.on small{color:var(--bg);opacity:.7}
+.pnl{display:none;text-align:center;margin-top:64px}.pnl.on{display:block}
+.pnl svg{height:40px;stroke:var(--text);fill:none;stroke-width:1.2}
+.pnl h3{font-weight:100;font-size:22px;letter-spacing:.4em;text-transform:uppercase;margin:16px 0 0}
+.pnl .cap{color:var(--muted);letter-spacing:.2em;font-size:13px;margin:6px 0 0}
+.tl{position:relative;max-width:640px;margin:56px auto 0;padding-left:32px;border-left:1px solid var(--text)}
+.tl .it{position:relative;padding-bottom:44px}
+.tl .it:last-child{padding-bottom:0}
+.tl .it::before{content:"";position:absolute;left:-37px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--text)}
+.tl .fin::before{background:var(--text)}
+.tl small{display:block;font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--muted)}
+.tl h3{font-weight:200;font-size:24px;letter-spacing:.15em;text-transform:uppercase;margin:4px 0 10px;line-height:1.25}
+.tl p,.tl li{margin:0;color:var(--muted);font-weight:300}
+.tl ul{margin:0;padding-left:18px}.tl li{padding:2px 0}
+.tl .bx{background:var(--text);padding:22px 24px}
+.tl .bx h3,.tl .bx small,.tl .bx p{color:var(--bg)}
+.tl .bx small,.tl .bx p{opacity:.75}
+.sb{max-width:680px;margin:56px auto 0}
+.sb h3{font-weight:200;font-size:13px;letter-spacing:.4em;text-transform:uppercase;border-top:1px solid var(--line);padding-top:28px;margin:48px 0 16px}
+.sb h3:first-child{border:0;margin-top:0;padding-top:0}
+.sb h4{font-weight:300;font-size:15px;letter-spacing:.2em;text-transform:uppercase;margin:24px 0 6px}
+.sb p{margin:0 0 14px;font-weight:300}
+.sb b{font-weight:400}.sb em{color:var(--muted)}
+.sb ul{list-style:none;margin:0;padding:0}
+.sb li{padding:10px 0;border-bottom:1px solid var(--line);font-weight:300}
+.cr{margin-top:20px}
+.cr small{display:block;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.cr a{color:var(--text);text-decoration:none;letter-spacing:.2em;font-size:14px;font-weight:300;margin:0 12px;border-bottom:1px solid transparent}
+.cr a:hover{border-color:var(--text)}
+.lk{position:relative;max-width:520px;margin:0 auto}
+.bl{filter:blur(7px);opacity:.75;user-select:none;pointer-events:none}
+.bl .rw{height:42px;background:var(--line);margin-top:10px}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.ov svg{height:44px;fill:none;stroke:var(--text);stroke-width:1.2}
+.ov b{font-weight:300;letter-spacing:.35em;text-transform:uppercase;font-size:14px}
+.sb summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sb summary::-webkit-details-marker{display:none}
+.sb summary::after{content:"+";font-size:22px;font-weight:100;color:var(--muted);line-height:1}
+.sb details[open] summary::after{content:"\2013"}
+.sb details p{margin:10px 0 2px;color:var(--muted);font-size:15px}
+footer{border-top:1px solid var(--line);padding:28px 16px;text-align:center;color:var(--text)}
+footer img{height:32px;width:auto}
+
+.hero{background:var(--text);color:var(--bg);text-align:center;padding:64px 20px 56px;margin-top:0}
+.hero small{display:block;font-size:11px;letter-spacing:.4em;text-transform:uppercase;opacity:.65}
+.hero h3{font-weight:100;font-size:clamp(30px,7vw,52px);letter-spacing:.25em;text-transform:uppercase;margin:12px -.25em 0 0;line-height:1.2}
+.btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btns a{display:inline-flex;align-items:center;gap:12px;text-decoration:none;text-transform:uppercase;letter-spacing:.25em;font-size:12px;font-weight:300;padding:14px 22px;border:1px solid var(--bg);color:var(--bg)}
+.btns a.fill{background:var(--bg);color:var(--text)}
+.cd{display:flex;justify-content:center;align-items:flex-start;gap:clamp(10px,3vw,28px);margin-top:48px}
+.cd div{min-width:64px}
+.cd b{display:block;font-weight:100;font-size:clamp(44px,12vw,84px);line-height:1;font-variant-numeric:tabular-nums}
+.cd span{display:block;margin-top:10px;font-size:11px;letter-spacing:.35em;text-transform:uppercase;opacity:.65}
+.cd i{font-style:normal;font-weight:100;font-size:clamp(34px,9vw,64px);line-height:1;opacity:.5}
+.nm{text-align:center;margin-top:80px}
+.nm h3{font-weight:100;font-size:clamp(28px,6vw,46px);letter-spacing:.25em;text-transform:uppercase;margin:0 -.25em 0 0;line-height:1.25}
+.chips{display:flex;gap:10px;overflow-x:auto;margin-top:36px;padding-bottom:6px;justify-content:center;flex-wrap:wrap}
+.chips a{border:1px solid var(--text);color:var(--text);text-decoration:none;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:300;padding:10px 18px;white-space:nowrap;cursor:pointer}
+.chips a.on{background:var(--text);color:var(--bg)}
+.cat{max-width:680px;margin:28px auto 0;text-align:left}
+.cat .c{display:none}.cat .c.on{display:block}
+.cat .r{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding:18px 4px;font-weight:200;font-size:18px;letter-spacing:.08em}
+.cat .r:last-child{border-bottom:1px solid var(--line)}
+.cat .r em{font-style:normal;color:var(--muted);font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.hero .at{display:inline-block;margin-top:14px;color:var(--bg);text-decoration:none;letter-spacing:.3em;font-size:14px;font-weight:300;opacity:.8;border-bottom:1px solid transparent}
+.hero .at:hover{opacity:1;border-color:var(--bg)}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#inicio" aria-label="Grammy">
+    <img src="data:image/png;base64,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" alt="Grammy" width="161" height="200">
+    <span>GRAMMY</span>
+  </a>
+  <nav id="nav">
+    <a href="#inicio" data-v="inicio">Início</a>
+    <a href="#noticias" data-v="noticias">Notícias</a>
+    <a href="#charts-popularidade" data-v="charts">Charts</a>
+    <a href="#indicados" data-v="indicados">Indicados</a>
+    <a href="#divulgacoes" data-v="divulgacoes">Divulgações</a>
+    <a href="#artistas" data-v="artistas">Artistas</a>
+    <a href="#cronograma" data-v="cronograma">Cronograma</a>
+    <a href="#sobre" data-v="sobre">Sobre</a>
+  </nav>
+</header>
+<main>
+  <section class="view" id="v-inicio"><h2>Início</h2>
+    <div class="hero" style="margin-top:56px">
+      <small>Grammy</small>
+      <h3>Grammy’s 2026</h3>
+      <a class="at" href="https://twitter.com/ogrammyss" target="_blank" rel="noopener noreferrer">@ogrammyss</a>
+      <div class="btns"><a class="fill" href="#sobre">Como funciona ↗</a><a href="#cronograma">Cronograma ↗</a></div>
+      <div class="cd" id="cd" data-target="2026-12-13T21:00:00-03:00">
+        <div><b id="cd-d">00</b><span>Dias</span></div><i>:</i>
+        <div><b id="cd-h">00</b><span>Horas</span></div><i>:</i>
+        <div><b id="cd-m">00</b><span>Minutos</span></div>
+      </div>
+    </div>
+    <div class="nm">
+      <h3>Indicados</h3>
+      <div class="chips" id="chips">
+        <a class="on" data-c="geral">Geral</a><a data-c="perf">Performance</a><a data-c="outras">Outras</a>
+      </div>
+      <div class="cat">
+        <div class="c on" id="c-geral"><div class="r">Álbum do Ano<em>Semana 4</em></div><div class="r">Gravação do Ano<em>Semana 4</em></div><div class="r">Música do Ano<em>Semana 4</em></div><div class="r">Artista Revelação<em>Semana 4</em></div></div>
+        <div class="c" id="c-perf"><div class="r">Melhor Performance Solo<em>Semana 4</em></div><div class="r">Melhor Performance em Dupla/Grupo<em>Semana 4</em></div><div class="r">Melhor Feat<em>Semana 4</em></div><div class="r">Melhor Gravação Dance<em>Semana 4</em></div></div>
+        <div class="c" id="c-outras"><div class="r">Melhor Álbum Vocal<em>Semana 4</em></div><div class="r">Melhor Videoclipe<em>Semana 4</em></div><div class="r">Recorde do Ano<em>Semana 4</em></div><div class="r">Produtor do Ano<em>Semana 4</em></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="view" id="v-noticias"><h2>Notícias</h2></section>
+  <section class="view" id="v-charts"><h2>Charts</h2>
+    <div class="tog">
+      <a href="#charts-popularidade" data-s="charts-popularidade"><i>01</i><b>Popularidade</b><small>O que está em alta</small></a>
+      <a href="#charts-normal" data-s="charts-normal"><i>02</i><b>Normal</b><small>Classificação semanal</small></a>
+    </div>
+    <div class="pnl" id="p-charts-popularidade">
+      <svg viewBox="0 0 40 40"><path d="M6 34V24M14 34V16M22 34V20M30 34V8"/></svg>
+      <h3>Popularidade</h3><p class="cap">Em alta agora</p>
+    </div>
+    <div class="pnl" id="p-charts-normal">
+      <svg viewBox="0 0 40 40"><path d="M6 10h28M6 20h28M6 30h28"/></svg>
+      <h3>Normal</h3><p class="cap">Classificação semanal</p>
+      <div class="lk" style="margin-top:56px"><div class="bl" aria-hidden="true"><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div></div><div class="ov"><svg viewBox="0 0 24 24" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Em breve</b></div></div>
+    </div>
+  </section>
+  <section class="view" id="v-indicados"><h2>Indicados</h2>
+    <div class="lk" style="margin-top:56px">
+      <div class="bl" aria-hidden="true"><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div></div>
+      <div class="ov"><svg viewBox="0 0 24 24" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Apenas na semana 4</b></div>
+    </div>
+  </section>
+  <section class="view" id="v-divulgacoes"><h2>Divulgações</h2>
+    <div class="lk" style="margin-top:56px"><div class="bl" aria-hidden="true"><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div></div><div class="ov"><svg viewBox="0 0 24 24" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Em breve</b></div></div>
+  </section>
+  <section class="view" id="v-artistas"><h2>Artistas</h2></section>
+  <section class="view" id="v-cronograma"><h2>Cronograma</h2>
+    <div class="tl">
+      <div class="it"><small>Semana I</small><h3>Especulações</h3><p>Rumores, teasers, entrevistas e notícias envolvendo os álbuns escolhidos.</p></div>
+      <div class="it"><small>Semana II</small><h3>Singles e Feats</h3><p>Anúncio das datas e lançamento oficial dos singles e dos feats.</p></div>
+      <div class="it"><small>Semana III</small><h3>Álbum</h3><p>Divulgação da data de lançamento, revelação da capa e relançamento oficial do álbum escolhido.</p></div>
+      <div class="it"><small>Semana IV</small><h3>Videoclipe, Campanha e Indicações</h3>
+        <ul><li>Lançamento oficial do videoclipe do artista</li><li>Campanha de divulgação do álbum</li><li>Publicação da Carta de Submissões (faixas, álbum e videoclipe)</li><li>Anúncio dos indicados</li></ul></div>
+      <div class="it fin"><div class="bx"><small>Domingo</small><h3>A Noite do Grammy</h3><p>Cerimônia de premiação e anúncio dos vencedores.</p></div></div>
+    </div>
+  </section>
+  <section class="view" id="v-sobre"><h2>Sobre</h2>
+    <div class="sb">
+      <h3>Como funciona</h3>
+      <p>Cada conta participante seleciona um artista e um álbum já pronto, lançado por ele, e dispõe de quatro semanas para fazer todo o processo de lançamento: especulações, singles e feats, lançamento do álbum, videoclipe e campanha. Ninguém cria um álbum novo. Ao término do ciclo, as campanhas mais notáveis são indicadas e premiadas em cerimônia oficial.</p>
+      <h3>Classificação de gênero</h3>
+      <p>Na Carta de Submissões, cada participante deve descrever o estilo do álbum, informando o <b>gênero principal</b> e, se houver, os <b>subgêneros</b>.</p>
+      <p><em>Exemplos: Pop, Pop Country, Dance Pop, Synth-Pop, R&amp;B Pop, Pop Rock.</em></p>
+      <p>A classificação define em quais categorias o álbum poderá concorrer.</p>
+      <h3>Categorias</h3>
+      <p><em>Toque em uma categoria para ver o significado.</em></p>
+      <h4>As quatro principais</h4>
+      <ul><li><details><summary>Álbum do Ano</summary><p>Premia um álbum completo, e não apenas uma faixa. Reconhece todo mundo que contribuiu para o projeto: artista, convidados, compositores de material novo, produtores e os engenheiros de gravação, mixagem e masterização.</p></details></li><li><details><summary>Gravação do Ano</summary><p>Premia uma única música na sua versão gravada, ou seja, a performance e a produção daquela faixa. Vai para o artista, o produtor e os engenheiros que fizeram a gravação. Pense em “record” como estúdio de gravação.</p></details></li><li><details><summary>Música do Ano</summary><p>Premia a composição: a escrita da canção, com letra e melodia. O prêmio vai para quem compôs, que nem sempre é quem canta.</p></details></li><li><details><summary>Artista Revelação</summary><p>Premia um artista em ascensão pelo conjunto do seu trabalho, sem ligação com uma música ou álbum específico. É o destaque de quem está construindo a carreira e ganhando espaço.</p></details></li></ul>
+      <h4>Demais categorias</h4>
+      <ul><li><details><summary>Melhor Performance Solo</summary><p>Premia a interpretação de um artista solo em uma faixa ou single. Vale a performance daquela gravação, não o álbum inteiro.</p></details></li><li><details><summary>Melhor Performance em Dupla/Grupo</summary><p>Premia gravações de duplas, grupos ou colaborações entre artistas. Também vale só para singles ou faixas, e não para álbuns.</p></details></li><li><details><summary>Melhor Feat</summary><p>Premia o melhor feat feito entre participantes, unindo os artistas escolhidos por eles. Vale para a faixa ou single, e não para o álbum inteiro.</p></details></li><li><details><summary>Melhor Álbum Vocal</summary><p>Premia um álbum inteiro com foco nos vocais. Reconhece o artista, os produtores e os engenheiros responsáveis pelo projeto.</p></details></li><li><details><summary>Melhor Gravação Dance</summary><p>Premia uma faixa ou single que une o estilo do artista com a batida de pista de dança. É a música pensada para cantar junto e dançar.</p></details></li><li><details><summary>Melhor Videoclipe</summary><p>Premia o videoclipe de uma música. Reconhece o artista e também as pessoas por trás da imagem, como o diretor e o produtor do vídeo.</p></details></li><li><details><summary>Recorde do Ano</summary><p>É o “Record of the Year” do Grammy: premia a gravação de uma única música, reunindo performance e produção. Vai para o artista, o produtor e os engenheiros da faixa.</p></details></li><li><details><summary>Produtor do Ano</summary><p>Premia um produtor pelo conjunto do seu trabalho no período, e não por uma música só. Reconhece quem moldou o som dos projetos do ano.</p></details></li></ul>
+      <h3>O que analisamos em cada álbum</h3>
+      <p><em>Toque em um ponto para ver o significado.</em></p>
+      <ul><li><details><summary>Escolha do álbum</summary><p>Avalia se o álbum escolhido combina com o artista e se as faixas de destaque foram bem aproveitadas na divulgação.</p></details></li><li><details><summary>Coesão da campanha</summary><p>Avalia se o lançamento passa a identidade do álbum e mantém uma proposta clara do início ao fim das quatro semanas.</p></details></li><li><details><summary>Originalidade</summary><p>Avalia o quanto o participante traz algo próprio na forma de lançar e divulgar o álbum, sem copiar o trabalho de outros participantes.</p></details></li><li><details><summary>Singles</summary><p>Avalia a escolha, o lançamento e a força dos singles divulgados antes do álbum.</p></details></li><li><details><summary>Capa e identidade visual</summary><p>Avalia a capa e o visual do projeto, e se eles combinam com o estilo e o conceito do álbum.</p></details></li><li><details><summary>Videoclipe</summary><p>Avalia o videoclipe lançado na Semana IV: criatividade, produção e ligação com a música.</p></details></li><li><details><summary>Divulgação e campanha</summary><p>Avalia a especulação, os teasers, as notícias e a campanha ao longo das quatro semanas.</p></details></li><li><details><summary>Classificação de gênero</summary><p>Avalia se o gênero principal e os subgêneros informados na Carta de Submissões combinam com o que o álbum entrega.</p></details></li><li><details><summary>Cumprimento dos prazos</summary><p>Avalia se cada etapa foi entregue dentro da semana prevista, do começo ao fim do ciclo.</p></details></li></ul>
+      <h3>Regulamento</h3>
+      <p>As participações estarão sujeitas ao cumprimento dos prazos de cada etapa. Contas que não completarem o ciclo estarão inelegíveis para indicação.</p>
+      <p><b>Atenção:</b> você não precisa criar uma conta nova para participar. Se preferir, pode enviar suas músicas, notícias e demais materiais diretamente a um dos fundadores.</p>
+      <p>Criar uma conta é opcional: quem quiser pode criar normalmente.</p>
+      <ul><li><b>Álbum:</b> o álbum deve ser um álbum já lançado pelo artista escolhido, com as faixas originais. Não é permitido criar um álbum novo.</li><li><b>Feats:</b> os feats só podem ser feitos com artistas que estejam na lista.</li><li><b>Videoclipe:</b> o videoclipe deve ser original.</li><li><b>Artista e álbum:</b> o artista e o álbum escolhidos não podem ser trocados. Depois da escolha, o participante segue com eles até o fim.</li><li><b>Participação:</b> quem não fizer nada ao longo das semanas será desclassificado.</li><li><b>Payolas e flops:</b> é permitido usar payolas e grupos de flops na divulgação dos posts. Os posts serão lançados no perfil do Grammy, e quem quiser enviar em grupos de flops para ganhar mais alcance pode fazer isso.</li></ul>
+    </div>
+  </section>
+</main>
+<footer>
+  <img src="data:image/png;base64,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" alt="Grammy" width="161" height="200">
+  <div class="cr"><small>Fundadores</small><a href="https://twitter.com/aripetall" target="_blank" rel="noopener noreferrer">@aripetall</a><a href="https://twitter.com/berghainroty" target="_blank" rel="noopener noreferrer">@berghainroty</a></div>
+</footer>
+<script>
+function route(){var h=(location.hash||"#inicio").slice(1);if(h=="charts")h="charts-popularidade";var v=h.indexOf("charts-")==0?"charts":h;
+if(v=="charts"&&!document.getElementById("p-"+h))h="charts-popularidade";
+if(!document.getElementById("v-"+v)){v="inicio";h="inicio"}
+document.querySelectorAll(".view").forEach(function(e){e.classList.toggle("on",e.id=="v-"+v)});
+document.querySelectorAll("#nav a").forEach(function(a){a.classList.toggle("on",a.dataset.v==v)});
+document.querySelectorAll(".tog a").forEach(function(a){a.classList.toggle("on",a.dataset.s==h)});
+document.querySelectorAll(".pnl").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);route();
+
+function tick(){var t=new Date(document.getElementById("cd").dataset.target)-new Date();if(t<0)t=0;var m=Math.floor(t/6e4),d=Math.floor(m/1440),h=Math.floor(m%1440/60);
+function p(n){return n<10?"0"+n:""+n}
+document.getElementById("cd-d").textContent=p(d);document.getElementById("cd-h").textContent=p(h);document.getElementById("cd-m").textContent=p(m%60)}
+tick();setInterval(tick,3e4);
+document.querySelectorAll("#chips a").forEach(function(a){a.addEventListener("click",function(){
+document.querySelectorAll("#chips a").forEach(function(x){x.classList.toggle("on",x==a)});
+document.querySelectorAll(".cat .c").forEach(function(c){c.classList.toggle("on",c.id=="c-"+a.dataset.c)})})});
+</script>
+</body>
+</html>
