@@ -115,6 +115,8 @@ footer img{height:32px;width:auto}
 .ad{position:relative;width:100%;max-width:520px;max-height:100%;overflow:auto;background:#e8e5d5;color:#242623;border-radius:28px;padding:30px 26px 32px;font-weight:300}
 .ad .k{font-weight:600;font-size:clamp(22px,5.4vw,28px);line-height:1.1;margin:0;padding-right:44px}
 .ad .nmx{font-weight:700;font-size:clamp(38px,11vw,62px);line-height:1;letter-spacing:-.02em;margin:10px 0 0}
+.ad .al{margin:8px 0 0;font-size:clamp(15px,4vw,18px);font-weight:600;letter-spacing:.02em;color:#75776c}
+.ad .al:empty{display:none}
 .ad .st{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
 .ad .st span{display:block;font-size:clamp(18px,4.6vw,22px)}
 .ad .st b{display:block;font-weight:700;font-size:clamp(40px,12vw,64px);line-height:1.1;margin-top:16px;color:#75776c}
@@ -241,6 +243,7 @@ footer img{height:32px;width:auto}
     <button class="x" id="am-x" aria-label="Fechar">&times;</button>
     <p class="k">Artista</p>
     <div class="nmx" id="am-n"></div>
+    <p class="al" id="am-a"></p>
     <div class="st"><div><span>Vitórias</span><b id="am-w"></b></div><div><span>Indicações</span><b id="am-m"></b></div></div>
     <div class="ct">Categoria</div>
     <div class="pl" id="am-c"></div>
@@ -272,12 +275,15 @@ var ARTISTS=[
 {u:"Arthuri",h:"MiddleofJU",a:"Kacey Musgraves",i:"2025/02/kacey-musgraves-18025.avif",w:8,n:21,c:["Country","General","American Roots Music"]},
 {u:"apt",h:"nicaptsoft",a:"Beyoncé",i:"2026/05/MI0005581646-MN0000761179.avif",w:35,n:100,c:["R&B","General","Rap","Pop","Country","Dance/Electronic Music","Music for Visual Media","Rock","American Roots Music"]},
 {u:"ari",h:"santamaculada",a:"Jennie",i:"2026/11/jennie-1.avif",w:0,n:2,c:["General","Pop"]},
-{u:"Lycs",h:"lycsrf",a:"Lisa",i:null,w:null,n:null,c:[],note:"Ainda sem página de artista no grammy.com."},
+{u:"Lycs",h:"lycsrf",a:"Lisa",al:"Lalisa \u00b7 BLACKPINK",i:null,w:0,n:0,c:[],note:"Sem indica\u00e7\u00f5es ao GRAMMY at\u00e9 agora. A indica\u00e7\u00e3o de 2027 em Best Asian Pop Music Performance \u00e9 da cantora japonesa LiSA, n\u00e3o da Lisa do BLACKPINK."},
 {u:"peh",h:"uspdroo",a:"Anitta",i:"2024/11/anitta-51568.avif",w:0,n:3,c:["General","Global Music","Latin"]},
 {u:"aka",h:"jatinhodatay",a:"Charli XCX",i:"2026/01/charli-xcx-18360.avif",w:3,n:12,c:["Pop","General","Dance/Electronic Music","Pop & Dance/Electronic Music","Alternative"]},
 {u:"mig",h:"abortliv",a:"Olivia Rodrigo",i:"2025/01/olivia-rodrigo-38411.avif",w:3,n:21,c:["General","Pop","Rock"]},
 {u:"Kaio",h:"shrtweetk",a:"Slayyyter",i:"2026/11/slayyyter-1.avif",w:0,n:4,c:["Dance/Electronic Music","General","Pop & Dance/Electronic Music"]},
-{u:"julia",h:"oliviafudida",a:"Britney Spears",i:"2024/01/britney-spears-15406.avif",w:1,n:8,c:["Pop","Dance/Electronic Music","General"]}
+{u:"julia",h:"oliviafudida",a:"Britney Spears",i:"2024/01/britney-spears-15406.avif",w:1,n:8,c:["Pop","Dance/Electronic Music","General"]},
+{u:"tulio",h:"webdivaariana",a:"Mariah Carey",i:null,w:5,n:34,c:["Pop","R&B","General","Production, Non-Classical"]},
+{u:"Ana",h:"ana_agb1",a:"Ariana Grande",i:null,w:3,n:24,c:["General","Pop","Pop & Dance/Electronic Music","Music for Visual Media","Music Video/Film"]},
+{u:"mila",h:"arianalacys",a:"Dua Lipa",i:null,w:3,n:10,c:["General","Pop","Dance/Electronic Music","Music for Visual Media"]}
 ];
 (function(){
 var grid=document.getElementById("ag"),am=document.getElementById("am"),lastBtn=null;
@@ -293,6 +299,7 @@ ARTISTS.forEach(function(d,k){
 function open(d,b){
   lastBtn=b;
   document.getElementById("am-n").textContent=d.a;
+  document.getElementById("am-a").textContent=d.al||"";
   document.getElementById("am-w").textContent=d.w==null?"\u2014":d.w;
   document.getElementById("am-m").textContent=d.n==null?"\u2014":d.n;
   var c=document.getElementById("am-c");c.textContent="";
