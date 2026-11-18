@@ -198,28 +198,8 @@ nav a,.logo,.logo span,h2::after{transition:color .9s ease,border-color .9s ease
 #v-billboard.on>:nth-child(3){animation-delay:.7s}
 #v-billboard.on>:nth-child(4){animation-delay:.9s}
 #v-billboard.on>:nth-child(5){animation-delay:1.1s}
-.bbs{text-align:center;color:var(--muted);font-weight:300;max-width:520px;margin:28px auto 0}
-.bbc{max-width:620px;margin:20px auto 0;padding:20px;border:1px solid var(--line);background:#0e0e10}
-.bbg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.bbc label{display:block;font-size:11px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.bbc input{width:100%;font:inherit;font-weight:300;font-size:15px;color:#fff;background:#000;border:1px solid #3a3a40;border-radius:0;padding:11px 12px;color-scheme:dark}
-.bbc input:focus-visible,.bbb:focus-visible{outline:1px solid #fff;outline-offset:2px}
-.bbr{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
-.bbr:first-child{border-top:0;padding-top:0}
-.bbn{font-weight:200;font-size:20px;text-align:center;padding-top:7px}
-.bbf{display:grid;gap:8px}
-.bbk{display:flex;gap:4px}
-.bbb{font:inherit;font-weight:300;font-size:12px;letter-spacing:.25em;text-transform:uppercase;background:none;border:1px solid #fff;color:#fff;padding:13px 18px;cursor:pointer;transition:background-color .25s,color .25s}
-.bbb.f,.bbb:hover{background:#fff;color:#000}
-.bbb.f:hover{background:none;color:#fff}
-.bbk .bbb{padding:6px 9px;font-size:13px;letter-spacing:0;border-color:#3a3a40}
-.bba{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-#bbOut{width:100%;display:block;background:#000;border:1px solid var(--line)}
-.bbh{margin:12px 0 0;font-size:12px;font-weight:300;color:var(--muted)}
-@media(max-width:480px){.bbg{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#v-billboard.on>*{animation:none}body,header,footer,body::before,nav a,.logo,.logo span,h2::after,.logo img,footer img{transition:none}}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -277,16 +257,7 @@ nav a,.logo,.logo span,h2::after{transition:color .9s ease,border-color .9s ease
   </section>
   <section class="view" id="v-noticias"><h2>Notícias</h2><div class="nwl" id="nwl"></div></section>
   <section class="view" id="v-billboard"><h2>Billboard</h2>
-    <p class="bbs">Monte o seu chart: edite as posições e a imagem se atualiza na hora.</p>
-    <div class="bbc"><div class="bbg">
-      <div><label for="bbTtl">Título do chart</label><input type="text" id="bbTtl" value="HOT 100"></div>
-      <div><label for="bbDt">Data do chart</label><input type="date" id="bbDt" value="2022-03-19"></div>
-    </div></div>
-    <div class="bbc"><div id="bbList"></div>
-      <div class="bba"><button class="bbb f" id="bbAdd">Adicionar posição</button><button class="bbb" id="bbReset">Restaurar exemplo</button></div></div>
-    <div class="bbc"><img id="bbOut" alt="Chart gerado">
-      <div class="bba"><button class="bbb f" id="bbDl">Baixar PNG</button></div>
-      <p class="bbh">No celular, toque e segure a imagem para salvar.</p></div>
+    <div class="lk" style="margin-top:56px"><div class="bl" aria-hidden="true"><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div><div class="rw"></div></div><div class="ov"><svg viewBox="0 0 24 24" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Em breve</b></div></div>
   </section>
   <section class="view" id="v-indicados"><h2>Indicados</h2>
     <div class="lk" style="margin-top:56px">
@@ -617,97 +588,6 @@ pool.slice(0,3).forEach(function(n){
   r.addEventListener("click",function(){window.openNews(n,r)});
   cards.push({a:a,b:b});box.appendChild(a);
 });
-})();
-</script>
-<script>
-(function(){
-const D=[["Heat Waves","Glass Animals"],["We Don’t Talk About Bruno","Carolina Gaitán, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast"],["Super Gremlin","Kodak Black"],["abcdefu","GAYLE"],["Stay","The Kid LAROI & Justin Bieber"],["Easy On Me","Adele"],["Ghost","Justin Bieber"],["Bad Habits","Ed Sheeran"],["Shivers","Ed Sheeran"],["Thats What I Want","Lil Nas X"]];
-const ex=()=>D.map(r=>({s:r[0],a:r[1]}));
-let rows=ex();
-const $=id=>document.getElementById(id);
-try{const v=JSON.parse(localStorage.getItem('bb100'));if(v&&v.rows&&v.rows.length){rows=v.rows;$('bbTtl').value=v.t||'HOT 100';$('bbDt').value=v.d||'2022-03-19'}}catch(e){}
-function save(){try{localStorage.setItem('bb100',JSON.stringify({rows,t:$('bbTtl').value,d:$('bbDt').value}))}catch(e){}}
-
-function build(){
-  const L=$('bbList');L.innerHTML='';
-  rows.forEach((r,i)=>{
-    const d=document.createElement('div');d.className='bbr';
-    d.innerHTML='<div class="bbn">'+(i+1)+'</div><div class="bbf"><input type="text" placeholder="Música" aria-label="Música '+(i+1)+'"><input type="text" placeholder="Artista" aria-label="Artista '+(i+1)+'"></div><div class="bbk"><button class="bbb" aria-label="Subir">↑</button><button class="bbb" aria-label="Descer">↓</button><button class="bbb" aria-label="Remover">✕</button></div>';
-    const [a,b]=d.querySelectorAll('input');a.value=r.s;b.value=r.a;
-    a.oninput=()=>{r.s=a.value;go()};b.oninput=()=>{r.a=b.value;go()};
-    const [u,w,x]=d.querySelectorAll('button');
-    u.onclick=()=>{if(i>0){[rows[i-1],rows[i]]=[rows[i],rows[i-1]];build();go()}};
-    w.onclick=()=>{if(i<rows.length-1){[rows[i+1],rows[i]]=[rows[i],rows[i+1]];build();go()}};
-    x.onclick=()=>{rows.splice(i,1);build();go()};
-    L.appendChild(d);
-  });
-}
-
-function wrap(c,t,w){const o=[];let l='';for(const wd of t.split(/\s+/).filter(Boolean)){const x=l?l+' '+wd:wd;if(l&&c.measureText(x).width>w){o.push(l);l=wd}else l=x}if(l)o.push(l);return o.length?o:['']}
-
-const K=1.35,F='Montserrat,"Arial Black",Arial,sans-serif';
-async function draw(){
-  try{await Promise.all(['500','700','800'].map(w=>document.fonts.load(w+' 20px Montserrat')))}catch(e){}
-  const m=document.createElement('canvas').getContext('2d');
-  const items=rows.map(r=>{
-    m.font='800 22px '+F;const sl=wrap(m,r.s,252);
-    m.font='500 21px '+F;const al=wrap(m,r.a,405);
-    return{sl,al,h:Math.max(51,Math.max(sl.length,al.length)*25+16)};
-  });
-  const y0=232,tot=items.reduce((s,i)=>s+i.h,0),H=Math.max(800,y0+tot+48);
-  const cv=document.createElement('canvas');cv.width=800*K;cv.height=H*K;
-  const c=cv.getContext('2d');c.scale(K,K);
-  c.fillStyle='#000';c.fillRect(0,0,800,H);
-  c.textBaseline='alphabetic';c.textAlign='left';c.fillStyle='#fff';
-  // logo
-  c.font='800 100px '+F;c.letterSpacing='-5px';
-  let sz=100*184/c.measureText('billboard').width;
-  c.font='800 '+sz+'px '+F;c.letterSpacing=(-sz*.05)+'px';
-  c.fillText('billboard',24,52);c.letterSpacing='0px';
-  // título 3D
-  const t=($('bbTtl').value||'HOT 100').toUpperCase();
-  c.font='800 100px '+F;
-  const tz=Math.min(140,100*600/c.measureText(t).width);
-  c.font='800 '+tz+'px '+F;c.textAlign='center';
-  const g=c.createLinearGradient(90,0,720,0);g.addColorStop(0,'#3ea6ff');g.addColorStop(.5,'#9b6bff');g.addColorStop(1,'#ff4fd8');
-  c.fillStyle=g;
-  for(let i=16;i>0;i--)c.fillText(t,402-i*.7,172+i*.7);
-  c.fillStyle='#fff';c.fillText(t,402,172);
-  // cabeçalho
-  c.textAlign='left';c.textBaseline='middle';c.font='700 19px '+F;
-  c.fillText('SONG',77,219);c.fillText('ARTIST',356,219);
-  // linhas
-  let y=y0;
-  items.forEach((it,i)=>{
-    c.fillStyle=i%2?'#f1f1f1':'#fff';c.fillRect(28,y,745,it.h);
-    c.fillStyle='#111';
-    c.font='500 22px '+F;c.textAlign='center';c.fillText(String(i+1),50,y+it.h/2);
-    c.textAlign='left';
-    c.font='800 22px '+F;
-    it.sl.forEach((l,k)=>c.fillText(l,82,y+(it.h-it.sl.length*25)/2+12.5+k*25));
-    c.font='500 21px '+F;
-    it.al.forEach((l,k)=>c.fillText(l,356,y+(it.h-it.al.length*25)/2+12.5+k*25));
-    y+=it.h;
-  });
-  // linhas pontilhadas
-  c.strokeStyle='#999';c.lineWidth=1.2;c.setLineDash([1.5,3]);
-  [72,347].forEach(x=>{c.beginPath();c.moveTo(x,y0-6);c.lineTo(x,y+4);c.stroke()});
-  c.setLineDash([]);
-  // data
-  let ds='';
-  const v=$('bbDt').value;
-  if(v){const [Y,M,Dd]=v.split('-').map(Number);ds=new Date(Y,M-1,Dd).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
-  c.fillStyle='#fff';c.font='500 13px '+F;c.textAlign='right';c.textBaseline='alphabetic';
-  c.fillText('chart dated '+ds,773,H-16);
-  $('bbOut').src=cv.toDataURL('image/png');
-}
-
-let tm;function go(){save();clearTimeout(tm);tm=setTimeout(draw,150)}
-$('bbTtl').oninput=go;$('bbDt').oninput=go;
-$('bbAdd').onclick=()=>{rows.push({s:'',a:''});build();go()};
-$('bbReset').onclick=()=>{rows=ex();$('bbTtl').value='HOT 100';$('bbDt').value='2022-03-19';build();go()};
-$('bbDl').onclick=()=>{const a=document.createElement('a');a.href=$('bbOut').src;a.download='billboard-hot-100.png';document.body.appendChild(a);a.click();a.remove()};
-build();draw();
 })();
 </script>
 </body>
