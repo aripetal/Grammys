@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GRAMMY</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Anton&family=Young+Serif&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;--bg:#fff;--text:#000;--muted:#777;--line:#e2e2e2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 :root[data-theme="light"]{--bg:#fff;--text:#000;--muted:#777;--line:#e2e2e2}
@@ -233,6 +233,14 @@ footer img{height:32px;width:auto}
 .rcm:hover{background:var(--text);color:var(--bg)}
 @media(min-width:700px){.rcl{flex-direction:row;height:380px}.rcc,.rcc.on{height:100%}.rcc{flex:1 1 0;min-width:0;transition:flex-grow .5s ease}.rcc.on{flex-grow:2.4}}
 @media(prefers-reduced-motion:reduce){.rcc,.rcc img,.rct p{transition:none}}
+/* Fontes: Billboard (Anton) e Pitchfork (Young Serif) */
+#v-billboard,#v-billboard .tog,#v-billboard .tog b,#v-billboard .tog i,#v-billboard .tog small,#v-billboard .pnl h3,#v-billboard .pnl .cap,#v-billboard h2{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400}
+#v-billboard h2,#v-billboard .pnl h3,#v-billboard .tog b{letter-spacing:.06em}
+#v-billboard .pnl .cap,#v-billboard .tog i,#v-billboard .tog small{letter-spacing:.08em}
+#v-pitchfork,#v-pitchfork .tog,#v-pitchfork .tog b,#v-pitchfork .tog i,#v-pitchfork .tog small,#v-pitchfork .pnl h3,#v-pitchfork .pnl .cap,#v-pitchfork h2{font-family:"Young Serif",Georgia,"Times New Roman",serif;font-weight:400}
+#v-pitchfork h2,#v-pitchfork .pnl h3,#v-pitchfork .tog b{text-transform:none;letter-spacing:-.01em}
+#v-pitchfork .pnl .cap,#v-pitchfork .tog i,#v-pitchfork .tog small{letter-spacing:.02em}
+#v-pitchfork .pnl h3{font-size:30px}
 </style>
 </head>
 <body>
