@@ -1099,28 +1099,28 @@ pool.slice(0,3).forEach(function(n){
 (function(){
 /* Para atualizar o chart: edite os pontos aqui. "p" = pontos desta semana (somados). "w" (opcional) = pontos da semana passada (gera setas e LW). Artistas sem "w" aparecem com a etiqueta NEW e os pontos no canto. "st" (opcional) = números de redes sociais. */
 var SC=[
-{a:"Charli xcx",h:"jatindatay",sc:1600000,p:[16,1],w:[16]},
-{a:"Adele",h:"maleftcry",sc:2100000,p:[12,9,543,77],w:[12,9],st:{l:"867K",sh:"109K",c:"93.8K",m:"203K"}},
-{a:"Doja Cat",h:"LMoonavenue",sc:1200000,p:[12,12,11],w:[12]},
-{a:"Adéla",h:"C_Raven_X0X0",sc:1800000,p:[4,9,5,6],w:[4,9,5]},
+{a:"Charli xcx",h:"jatindatay",sc:1700000,p:[16,1],w:[16]},
+{a:"Adele",h:"maleftcry",sc:64100000,p:[12,9,543,77],w:[12,9],st:{l:"867K",sh:"109K",c:"93.8K",m:"203K"}},
+{a:"Doja Cat",h:"LMoonavenue",sc:3500000,p:[12,12,11],w:[12]},
+{a:"Adéla",h:"C_Raven_X0X0",sc:2400000,p:[4,9,5,6],w:[4,9,5]},
 {a:"Chappell Roan",h:"electrapetz",sc:900000,p:[9],w:[9]},
-{a:"Kim Petras",h:"EIlishRodrigo23",sc:900000,p:[9,1],w:[9]},
+{a:"Kim Petras",h:"EIlishRodrigo23",sc:1000000,p:[9,1],w:[9]},
 {a:"Beyoncé",h:"dandelionnag",sc:1800000,p:[12,6],w:[12,6]},
 {a:"Anitta",h:"uspdroo",sc:800000,p:[8],w:[8]},
 {a:"Lizzo",h:"lcasssGrande",sc:700000,p:[7],w:[7]},
-{a:"Zara Larsson",h:"bluemoonyz",sc:200000,p:[2,7],w:[2]},
-{a:"Dua Lipa",h:"arianalacys",sc:100000,p:[1,1,59],w:[1]},
-{a:"Luísa Sonza",h:"peusonzer",sc:300000,p:[3,225],w:[3]},
+{a:"Zara Larsson",h:"bluemoonyz",sc:900000,p:[2,7],w:[2]},
+{a:"Dua Lipa",h:"arianalacys",sc:6100000,p:[1,1,59],w:[1]},
+{a:"Luísa Sonza",h:"peusonzer",sc:22800000,p:[3,225],w:[3]},
 {a:"Ariana Grande",h:"titancrisng",sc:600000,p:[6],w:[6]},
 {a:"Sabrina Carpenter",h:"livlovblues",sc:200000,p:[2],w:[2]},
-{a:"Madison Beer",p:[3]},
-{a:"Olivia Rodrigo",p:[8]},
-{a:"PinkPantheress",p:[9]},
-{a:"Lady Gaga",p:[3]},
-{a:"Slayyyter",p:[1]}
+{a:"Madison Beer",sc:300000,p:[3]},
+{a:"Olivia Rodrigo",sc:800000,p:[8]},
+{a:"PinkPantheress",sc:900000,p:[9]},
+{a:"Lady Gaga",sc:300000,p:[3]},
+{a:"Slayyyter",sc:100000,p:[1]}
 ];
 /* Score vem do chart. Curtidas/compart./comentários/menções só foram informados para a Adele; nos outros são ESTIMADOS com as mesmas proporções dela. Para usar números reais, adicione st:{l:"",sh:"",c:"",m:""} no artista. */
-var RT={l:867/2100,sh:109/2100,c:93.8/2100,m:203/2100};
+var RT={l:867/64100,sh:109/64100,c:93.8/64100,m:203/64100};
 function fm(n){if(n>=1e6)return String(Math.round(n/1e5)/10).replace(/\.0$/,"")+"M";if(n>=1e5)return Math.round(n/1e3)+"K";return (Math.round(n/100)/10).toFixed(1).replace(/\.0$/,"")+"K"}
 function nz(t){return String(t).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()}
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
