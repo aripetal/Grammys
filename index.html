@@ -274,10 +274,16 @@ footer img{height:32px;width:auto}
 .pnl .sc-sc{display:inline-block;background:#000;color:#7bf7ab;font-weight:800;text-transform:uppercase;font-size:clamp(14px,4vw,20px);padding:4px 16px 5px 18px;margin:12px 14px 0 0}
 .pnl .sc-st{display:flex;flex-direction:column;gap:4px;margin-top:10px;font-size:clamp(13px,3.7vw,19px);text-transform:uppercase;color:#000;font-weight:500;letter-spacing:.01em}
 .pnl .sc-st b{color:#000;font-weight:800}
-.pnl .sc-p{margin-top:16px;font-size:clamp(14px,4vw,20px);text-transform:uppercase;color:#000;font-weight:500}
-.pnl .sc-p b{color:#000;font-weight:800;font-size:1.05em}
-.pnl .sc-pb{height:clamp(6px,1.6vw,9px);background:#d4d4d4;margin-top:10px}
-.pnl .sc-pb i{display:block;height:100%;background:#000}
+.pnl .sc-num{display:block}
+.pnl .sc-mv{display:block;margin-top:8px;font-size:clamp(13px,3.4vw,17px);font-weight:800;line-height:1}
+.pnl .sc-mv.up{color:#0a8f3c}.pnl .sc-mv.dn{color:#d3202f}.pnl .sc-mv.eq{color:#777}
+.pnl .sc-r{position:relative}
+.pnl .sc-r.is-new{padding-top:clamp(42px,9.5vw,54px)}
+.pnl .sc-nw{position:absolute;top:0;right:0;display:flex;align-items:stretch;font-size:clamp(11px,3vw,14px);line-height:1}
+.pnl .sc-nwp{background:#ebebeb;color:#000;font-weight:800;text-transform:uppercase;padding:8px 10px;display:flex;align-items:center}
+.pnl .sc-nwt{background:#000;color:#7bf7ab;font-weight:800;letter-spacing:.1em;padding:8px 12px;display:flex;align-items:center}
+.pnl .sc-lw{margin-top:12px;font-size:clamp(13px,3.7vw,19px);text-transform:uppercase;color:#000;font-weight:500;letter-spacing:.01em}
+.pnl .sc-lw b{font-weight:800}
 @media(max-width:380px){.pnl .sc-r{grid-template-columns:30px 76px minmax(0,1fr);column-gap:10px}}
 </style>
 </head>
@@ -1091,23 +1097,27 @@ pool.slice(0,3).forEach(function(n){
 </script>
 <script>
 (function(){
-var MAX=25;
-/* Para atualizar o chart: edite os pontos aqui. "p" = lista de pontos que são somados. "st" (opcional) = números de redes sociais. */
+/* Para atualizar o chart: edite os pontos aqui. "p" = pontos desta semana (somados). "w" (opcional) = pontos da semana passada (gera setas e LW). Artistas sem "w" aparecem com a etiqueta NEW e os pontos no canto. "st" (opcional) = números de redes sociais. */
 var SC=[
-{a:"Adele",h:"maleftcry",sc:2100000,p:[12,9],st:{l:"867K",sh:"109K",c:"93.8K",m:"203K"}},
-{a:"Adéla",h:"C_Raven_X0X0",sc:1800000,p:[4,9,5]},
-{a:"Beyoncé",h:"dandelionnag",sc:1800000,p:[12,6]},
-{a:"Charli xcx",h:"jatindatay",sc:1600000,p:[16]},
-{a:"Doja Cat",h:"LMoonavenue",sc:1200000,p:[12]},
-{a:"Chappell Roan",h:"electrapetz",sc:900000,p:[9]},
-{a:"Kim Petras",h:"EIlishRodrigo23",sc:900000,p:[9]},
-{a:"Anitta",h:"uspdroo",sc:800000,p:[8]},
-{a:"Lizzo",h:"lcasssGrande",sc:700000,p:[7]},
-{a:"Ariana Grande",h:"titancrisng",sc:600000,p:[6]},
-{a:"Luísa Sonza",h:"peusonzer",sc:300000,p:[3]},
-{a:"Zara Larsson",h:"bluemoonyz",sc:200000,p:[2]},
-{a:"Sabrina Carpenter",h:"livlovblues",sc:200000,p:[2]},
-{a:"Dua Lipa",h:"arianalacys",sc:100000,p:[1]}
+{a:"Charli xcx",h:"jatindatay",sc:1600000,p:[16,1],w:[16]},
+{a:"Adele",h:"maleftcry",sc:2100000,p:[12,9,543,77],w:[12,9],st:{l:"867K",sh:"109K",c:"93.8K",m:"203K"}},
+{a:"Doja Cat",h:"LMoonavenue",sc:1200000,p:[12,12,11],w:[12]},
+{a:"Adéla",h:"C_Raven_X0X0",sc:1800000,p:[4,9,5,6],w:[4,9,5]},
+{a:"Chappell Roan",h:"electrapetz",sc:900000,p:[9],w:[9]},
+{a:"Kim Petras",h:"EIlishRodrigo23",sc:900000,p:[9,1],w:[9]},
+{a:"Beyoncé",h:"dandelionnag",sc:1800000,p:[12,6],w:[12,6]},
+{a:"Anitta",h:"uspdroo",sc:800000,p:[8],w:[8]},
+{a:"Lizzo",h:"lcasssGrande",sc:700000,p:[7],w:[7]},
+{a:"Zara Larsson",h:"bluemoonyz",sc:200000,p:[2,7],w:[2]},
+{a:"Dua Lipa",h:"arianalacys",sc:100000,p:[1,1,59],w:[1]},
+{a:"Luísa Sonza",h:"peusonzer",sc:300000,p:[3,225],w:[3]},
+{a:"Ariana Grande",h:"titancrisng",sc:600000,p:[6],w:[6]},
+{a:"Sabrina Carpenter",h:"livlovblues",sc:200000,p:[2],w:[2]},
+{a:"Madison Beer",p:[3]},
+{a:"Olivia Rodrigo",p:[8]},
+{a:"PinkPantheress",p:[9]},
+{a:"Lady Gaga",p:[3]},
+{a:"Slayyyter",p:[1]}
 ];
 /* Score vem do chart. Curtidas/compart./comentários/menções só foram informados para a Adele; nos outros são ESTIMADOS com as mesmas proporções dela. Para usar números reais, adicione st:{l:"",sh:"",c:"",m:""} no artista. */
 var RT={l:867/2100,sh:109/2100,c:93.8/2100,m:203/2100};
@@ -1115,16 +1125,31 @@ function fm(n){if(n>=1e6)return String(Math.round(n/1e5)/10).replace(/\.0$/,"")+
 function nz(t){return String(t).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()}
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 var list=document.getElementById("sc-list");if(!list)return;
-var rows=SC.map(function(d){
+function sum(a){return a.reduce(function(x,y){return x+y},0)}
+var lwList=[];SC.forEach(function(d,i){if(d.w)lwList.push({i:i,t:sum(d.w)})});
+lwList.sort(function(a,b){return b.t-a.t||a.i-b.i});
+var lwRank={};lwList.forEach(function(x,k){lwRank[x.i]=k+1});
+var rows=SC.map(function(d,i){
   var f=null;(typeof ARTISTS!=="undefined"?ARTISTS:[]).forEach(function(x){if(nz(x.a)==nz(d.a))f=x});
-  var st=d.st||{l:fm(d.sc*RT.l),sh:fm(d.sc*RT.sh),c:fm(d.sc*RT.c),m:fm(d.sc*RT.m)};
-  return {name:d.a,h:d.h||(f?f.h:null),img:d.i||(f?f.i:null),sc:fm(d.sc),st:st,t:d.p.reduce(function(a,b){return a+b},0)}});
-rows.sort(function(a,b){return b.t-a.t});
+  var st=d.sc?(d.st||{l:fm(d.sc*RT.l),sh:fm(d.sc*RT.sh),c:fm(d.sc*RT.c),m:fm(d.sc*RT.m)}):null;
+  return {name:d.a,h:d.h||(f?f.h:null),img:d.i||(f?f.i:null),sc:d.sc?fm(d.sc):null,st:st,t:sum(d.p),lw:lwRank[i]||null,o:i}});
+rows.sort(function(a,b){return b.t-a.t||a.o-b.o});
 var rk=0;
 rows.forEach(function(r,k){
   rk=k+1;
   var row=el("div","sc-r");
-  row.appendChild(el("div","sc-n",rk));
+  var nn=el("div","sc-n");nn.appendChild(el("span","sc-num",rk));
+  var mv;
+  if(!r.lw){mv=null}
+  else if(r.lw>rk){mv=el("span","sc-mv up","\u25B2");mv.setAttribute("aria-label","Subiu")}
+  else if(r.lw<rk){mv=el("span","sc-mv dn","\u25BC");mv.setAttribute("aria-label","Caiu")}
+  else{mv=el("span","sc-mv eq","\u2013");mv.setAttribute("aria-label","Manteve a posição")}
+  if(mv)nn.appendChild(mv);row.appendChild(nn);
+  if(!r.lw){row.classList.add("is-new");
+    var cn=el("div","sc-nw");
+    cn.appendChild(el("span","sc-nwp",r.t+(r.t==1?" ponto":" pontos")));
+    cn.appendChild(el("b","sc-nwt","NEW"));
+    row.appendChild(cn)}
   var hue=(k*47+250)%360;
   var av=el("div","sc-av");av.style.setProperty("--g","linear-gradient(135deg,hsl("+hue+",52%,32%),hsl("+((hue+45)%360)+",55%,16%))");
   av.appendChild(el("span","ini",r.name.charAt(0)));
@@ -1135,17 +1160,18 @@ rows.forEach(function(r,k){
   var b=el("div","sc-b");
   b.appendChild(el("div","sc-nm",r.name));
   if(r.h)b.appendChild(el("div","sc-h","@"+r.h));
-  b.appendChild(el("span","sc-sc","Score "+r.sc));
-  var st=el("div","sc-st");
-  [["Curtidas",r.st.l],["Compart.",r.st.sh],["Comentários",r.st.c],["Menções",r.st.m]].forEach(function(x){
-    var l=el("div","",x[0]+" ");l.appendChild(el("b","",x[1]));st.appendChild(l)});
-  b.appendChild(st);
-  var p=el("div","sc-p","Pontos ");p.appendChild(el("b","",r.t+" / "+MAX));b.appendChild(p);
-  var pb=el("div","sc-pb");var bi=el("i");bi.style.width=Math.min(100,r.t/MAX*100)+"%";pb.appendChild(bi);b.appendChild(pb);
+  if(r.sc){
+    b.appendChild(el("span","sc-sc","Score "+r.sc));
+    var st=el("div","sc-st");
+    [["Curtidas",r.st.l],["Compart.",r.st.sh],["Comentários",r.st.c],["Menções",r.st.m]].forEach(function(x){
+      var l=el("div","",x[0]+" ");l.appendChild(el("b","",x[1]));st.appendChild(l)});
+    b.appendChild(st);
+  }
+  var lw=el("div","sc-lw","LW ");lw.appendChild(el("b","",r.lw?r.lw:"\u2014"));b.appendChild(lw);
   row.appendChild(b);list.appendChild(row);
 });
 var note=document.getElementById("sc-note"),cur=null;
-var TX={cal:"Semana de 19 de novembro de 2026. As semanas anteriores aparecerão aqui.",info:"Classificação por pontos, de 0 a "+MAX+"."};
+var TX={cal:"Semana de 19 de novembro de 2026. As semanas anteriores aparecerão aqui.",info:"Classificação por pontos, sem limite. LW = posição na semana passada."};
 function show(k,txt){if(cur==k&&k!="share"){note.hidden=true;cur=null;return}cur=k;note.textContent=txt;note.hidden=false}
 document.querySelectorAll(".sc-ib").forEach(function(btn){btn.addEventListener("click",function(){
   var k=btn.dataset.n;
